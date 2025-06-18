@@ -549,6 +549,7 @@ function gamekaishi() {
 }
 
 function hajime() {
+    alert("ゲーム中に効果音が流れるため音量にご注意ください");
     // 背景のCanvasを取得
     backgamen = document.getElementById('back');
     // 絵を描くために2Dコンテキストを取得して変数に代入
