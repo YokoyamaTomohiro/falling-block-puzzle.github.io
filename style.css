@@ -14,6 +14,23 @@ body {
   2px 2px 0 #000000;
 }
 
+.Second_discription {
+  animation-name: textanime;/*keyname*/
+  animation-duration:5s;/*最大再生時間*/
+  animation-iteration-count:infinite;/*繰り返し*/
+}
+
+@keyframes textanime
+{
+  0%{
+  opacity: 0;
+  }
+
+  100%{
+  opacity: 1;
+  }
+}
+
 /*** 雪玉（共通） ***/
 .snows div{
     position: fixed; /*画面固定*/
