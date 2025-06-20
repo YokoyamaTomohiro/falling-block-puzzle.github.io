@@ -30,6 +30,16 @@ body {
   }
 }
 
+.startbtn {
+  transition: .4s cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+.startbtn:hover {
+  background: #00FFFF;
+  color: #FF8856;
+  letter-spacing: 0.15em;
+}
+
 /*** 雪玉（共通） ***/
 .snows div{
     position: fixed; /*画面固定*/
