@@ -21,7 +21,7 @@
         <button onclick="document.getElementById('BGM').play();">BGM再生</button>
         <button onclick="document.getElementById('BGM').pause();">BGM一時停止</button>
         <div style="position: absolute; left: 20px; top: 30px">
-            <h1>落ちものパズル</h1>
+            <h1 class="top">落ちものパズル</h1>
             <div style="width: 380px;">
                 スコア：<span id="tokuten">0</span>
             </div>
@@ -29,7 +29,7 @@
             <canvas id="game" width="240" height="440" style="position:absolute; left: 20px; top: 150px; background-color: transparent"></canvas>
             <canvas id="tsugi" width="80" height="80" style="position:absolute; left: 300px; top: 150px; background-color: black"></canvas>
             <button id="kaishibtn" style="position: absolute; left: 300px; top: 300px; width: 80px; height: 50px;" onclick="gamekaishi()">ゲーム<br>スタート</button>
-            <p style="position: absolute; top: 600px; font-size: 25px;">ゲームの操作説明</p>
+            <p class="description" style="position: absolute; top: 600px; font-size: 25px;">ゲームの操作説明</p>
             <p style="position: absolute; top: 675px;">↑キーで90度回転</p>
             <p style="position: absolute; top: 710px;">→キーで右に移動</p>
             <p style="position: absolute; top: 745px;">←キーで左に移動</p>
