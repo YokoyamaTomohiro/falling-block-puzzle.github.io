@@ -16,8 +16,7 @@ body {
 
 .Second_discription {
   animation-name: textanime;/*keyname*/
-  animation-duration:5s;/*最大再生時間*/
-  animation-iteration-count:infinite;/*繰り返し*/
+  animation-duration:8s;/*最大再生時間*/
 }
 
 @keyframes textanime
