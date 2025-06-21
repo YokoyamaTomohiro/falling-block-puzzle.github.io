@@ -16,7 +16,7 @@ body {
 
 .Second_discription {
   animation-name: textanime;/*keyname*/
-  animation-duration:8s;/*最大再生時間*/
+  animation-duration:10s;/*最大再生時間*/
 }
 
 @keyframes textanime
@@ -38,6 +38,52 @@ body {
   background: #00FFFF;
   color: #FF8856;
   letter-spacing: 0.15em;
+}
+
+.BGM_Start {
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  font-size: 1em;
+}
+
+.BGM_Start:hover {
+  animation: anima-button-30 1s;
+}
+
+@keyframes anima-button-30 {
+  0% {
+      box-shadow: 0 0 0 0 rgb(37 137 208 / 50%);
+  }
+  100% {
+      box-shadow: 0 0 0 1.2em rgb(0 0 0 / 0%);
+  }
+}
+
+.BGM_Stop {
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  font-size: 1em;
+}
+
+.BGM_Stop:hover {
+  animation: anima-button-30 1s;
+}
+
+@keyframes anima-button-30 {
+  0% {
+      box-shadow: 0 0 0 0 rgb(37 137 208 / 50%);
+  }
+  100% {
+      box-shadow: 0 0 0 1.2em rgb(0 0 0 / 0%);
+  }
 }
 
 /*** 雪玉（共通） ***/
