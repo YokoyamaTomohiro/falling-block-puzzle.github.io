@@ -39,6 +39,15 @@
                 <p style="position: absolute; top: 850px; color: #CEF9DC; background: linear-gradient(navy,aqua);">次に落ちてくるブロックが右上に表示されます</p>
             </div>
         </div>
+        <!--パスワード認証-->
+        <input class="ranking_page" type="button" onclick="gate()" value="パスワードを入力してランキングのページへアクセスする">
+
+        <script type="text/javascript">
+            function gate() {
+                var UserInput = prompt("パスワードを入力して下さい:","");
+                location.href = UserInput + ".html";
+            }
+        </script>
 
         <div class="snows">
             <div></div>
