@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ゲームランキング</title>
+</head>
+<body>
+
+<h1>ゲームランキング</h1>
+
+<ul id="ranking">
+</ul>
+
+<input type="text" id="playerName" placeholder="プレイヤー名">
+<input type="number" id="score" placeholder="スコア">
+<button onclick="addScore()">スコア追加</button>
+
+<script>
+  let ranking = [];
+
+  // ローカルストレージからランキングデータを読み込む
+  function loadRanking() {
+    const storedRanking = localStorage.getItem('gameRanking');
+    if (storedRanking) {
+      ranking = JSON.parse(storedRanking);
+
+    }
+    /* ローカルストレージの内容を全て削除する時に使います
+    localStorage.clear()
+    */
+  
+  }
+
+  // ランキングデータをローカルストレージに保存する
+  function saveRanking() {
+    localStorage.setItem('gameRanking', JSON.stringify(ranking));
+  }
+
+  // スコアを追加する
+  function addScore() {
+    const playerName = document.getElementById('playerName').value;
+    const score = parseInt(document.getElementById('score').value);
+
+    if (playerName && !isNaN(score)) {
+      ranking.push({ name: playerName, score: score });
+      sortRanking();
+      displayRanking();
+      saveRanking();
+
+
+      // 入力欄をクリア
+      document.getElementById('playerName').value = '';
+      document.getElementById('score').value = '';
+    } else {
+      alert('プレイヤー名とスコアを入力してください。');
+    }
+  }
+
+  // ランキングをソートする（スコアの高い順）
+  function sortRanking() {
+    ranking.sort((a, b) => b.score - a.score);
+  }
+
+  // ランキングを表示する
+  function displayRanking() {
+    const rankingList = document.getElementById('ranking');
+    rankingList.innerHTML = ''; // 既存のリストをクリア
+    
+
+    
+
+    for (let i = 0; i < ranking.length; i++) {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${i + 1}位: ${ranking[i].name}  ${ranking[i].score}`;
+      rankingList.appendChild(listItem);
+    }
+  }
+  
+  // 初期化処理
+  loadRanking();
+  displayRanking();
+
+</script>
+
+</body>
+</html>
