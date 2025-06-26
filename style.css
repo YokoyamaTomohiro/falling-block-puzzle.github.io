@@ -69,6 +69,47 @@ body {
   }
 }
 
+.ranking_page {
+  overflow: hidden;
+  border: 1px solid #2589d0;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #2589d0;
+  height: 25px;
+}
+
+.ranking_page:hover {
+  background-color: transparent;
+  color: #2589d0;
+  animation: anima-button-30 1s;
+}
+
+
+.ranking_page::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  background-color: #2589d0;
+  content: '';
+  transition: width .3s ease;
+}
+
+.ranking_page:hover::before {
+  width: 100%;
+}
+
+@keyframes anima-button-30 {
+  0% {
+      box-shadow: 0 0 0 0 rgb(37 137 208 / 50%);
+  }
+  100% {
+      box-shadow: 0 0 0 1.2em rgb(0 0 0 / 0%);
+  }
+}
+
 .BGM_Start {
   justify-content: center;
   align-items: center;
