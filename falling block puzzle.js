@@ -555,6 +555,9 @@ function hajime() {
     // 絵を描くために2Dコンテキストを取得して変数に代入
     cd = backgamen.getContext('2d');
 
+    //関数が実際に動いているかのテストコード
+    console.log("関数が実行されました。");
+
     //fillRectが具体的な操作で、fillStyleはそれを行うための準備（塗りつぶしに使うスタイル）
 
     //strokeStyle は輪郭のスタイルを設定し、strokerect はそのスタイルで矩形の輪郭を描画するs
