@@ -549,6 +549,11 @@ function gamekaishi() {
 }
 
 function hajime() {
+    
+    console.time('time');
+
+    console.log('自動で実行される関数の処理速度を測定開始');
+    
     alert("ゲーム中に効果音が流れるため音量にご注意ください");
     // 背景のCanvasを取得
     backgamen = document.getElementById('back');
@@ -602,4 +607,8 @@ function hajime() {
         cd.strokeRect(x, y, 20, 20);
         x = x + 20;
     }
+
+    console.timeEnd('time');
+
+    console.log('測定終了');
 }
