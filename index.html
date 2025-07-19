@@ -5,6 +5,14 @@
         <title></title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+      html, body {
+        touch-action: manipulation;
+        -ms-touch-action: manipulation;
+        overscroll-behavior: none;
+      }
+    </style>
     </head>
 
     <body onload="hajime()" onkeydown="ugokasu(event)">
@@ -82,6 +90,19 @@
                 margin: auto;
             }
         </style>
+
+        <script>
+          window.onload = function () {
+            const buttons = document.querySelectorAll('.smartphone button');
+            buttons.forEach(btn => {
+              btn.addEventListener('touchstart', e => {
+            e.preventDefault(); // ダブルタップズーム防止
+            btn.click();        // click を発火させる
+          }, { passive: false });
+        });
+      };
+        </script>
+
     </body>
 
 </html>
