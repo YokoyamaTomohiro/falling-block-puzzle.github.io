@@ -314,6 +314,62 @@ function shitaidou() {
     }
 }
 
+function ghostDraw() {
+    // 描画先Canvasとコンテキストを取得
+    let gamegamen = document.getElementById('game');
+    let cg = gamegamen.getContext('2d');
+
+    // ゴースト落下位置を計算
+    let ghostY = iy;
+    while (kakunin(ix, ghostY + 1, imuki, ishurui)) {
+        ghostY++;
+    }
+
+    cg.fillStyle = 'rgba(0, 255, 255, 0.1)';   // 水色で透明度10%
+    cg.strokeStyle = 'rgba(0, 200, 200, 0.2)';  // 輪郭を少し濃く透明度20%
+    cg.lineWidth = 2;
+
+    // 現在のブロックの形を取得
+    let p = block[ishurui][imuki];
+
+    // ゴーストブロックを描画
+    for (let n = 0; n < 4; n++) {
+        for (let m = 0; m < 4; m++) {
+            if (p[n][m] === 1) {
+                cg.fillRect((ix + m) * 20, (ghostY + n) * 20, 20, 20);
+                cg.strokeRect((ix + m) * 20, (ghostY + n) * 20, 20, 20);
+            }
+        }
+    }
+}
+
+
+function drawAll() {
+    let gamegamen = document.getElementById('game');
+    let cg = gamegamen.getContext('2d');
+
+    // 全体をクリア
+    cg.clearRect(0, 0, 239, 439);
+
+    // 積み上がったブロックを描画
+    for (let y = 0; y < 22; y++) {
+        for (let x = 0; x < 12; x++) {
+            if (jyoutai[y][x] !== 100 && jyoutai[y][x] !== 99) {
+                cg.fillStyle = biro[jyoutai[y][x]];
+                cg.strokeStyle = '#333333';
+                cg.lineWidth = 3;
+                cg.fillRect(x * 20, y * 20, 20, 20);
+                cg.strokeRect(x * 20, y * 20, 20, 20);
+            }
+        }
+    }
+}
+
+// ghostDraw()
+cg.fillStyle = 'rgba(0, 255, 255, 0.4)';
+cg.strokeStyle = 'rgba(0, 200, 200, 0.5)';
+
+
 function haaddodoroppu() {
     // 描画先のCanvasを取得
     gamegamen = document.getElementById('game');
@@ -360,6 +416,10 @@ function haaddodoroppu() {
         alert('ゲームオーバー');
         jikkou = false;
     }
+
+    drawAll();        // 状態ブロックを描く
+    ghostDraw();      // ゴーストを描く
+    kaku(cg, ix, iy, imuki, ishurui); // 現在の操作中ブロックを描く
 }
 
 
@@ -420,6 +480,11 @@ function ugokasu(e) {
     }
     // 新しい場所にブロックを描く
     kaku(cg, ix, iy, imuki, ishurui);
+
+    drawAll();        // 状態ブロックを描く
+    ghostDraw();      // ゴーストを描く
+    kaku(cg, ix, iy, imuki, ishurui); // 現在の操作中ブロックを描く
+
 }
 
     
@@ -461,6 +526,31 @@ function kaku(c, bx, by, muki, shurui) {
     }
 
 }
+
+function drawAll() {
+    let gamegamen = document.getElementById('game');
+    let cg = gamegamen.getContext('2d');
+
+    // 全体をクリア
+    cg.clearRect(0, 0, 239, 439);
+
+    // 積み上がったブロックを描画
+    for (let y = 0; y < 22; y++) {
+        for (let x = 0; x < 12; x++) {
+            if (jyoutai[y][x] !== 100 && jyoutai[y][x] !== 99) {
+                cg.fillStyle = biro[jyoutai[y][x]];
+                cg.strokeStyle = '#333333';
+                cg.lineWidth = 3;
+                cg.fillRect(x * 20, y * 20, 20, 20);
+                cg.strokeRect(x * 20, y * 20, 20, 20);
+            }
+        }
+    }
+
+    // ここでゴーストを描く！
+    ghostDraw();
+}
+
 
 // 当たり判定用の配列を作る
 jyoutai = [];
