@@ -760,3 +760,24 @@ function hajime() {
 
     console.log('測定終了');
 }
+
+/* スマホ用ボタンの関数
+今ある ugokasu(e) の中からキーコード判定部分を抜き出して、個別関数にしています。：
+*/
+
+function moveLeft() {
+    ugokasu({ keyCode: 37 });
+}
+
+function moveRight() {
+    ugokasu({ keyCode: 39 });
+}
+
+function rotateBlock() {
+    ugokasu({ keyCode: 38 });
+}
+
+function softDrop() {
+    ugokasu({ keyCode: 40 });
+}
+
