@@ -314,10 +314,66 @@ function shitaidou() {
     }
 }
 
+function haaddodoroppu() {
+    // 描画先のCanvasを取得
+    gamegamen = document.getElementById('game');
+    cg = gamegamen.getContext('2d');
+
+    // 現在の座標を保存
+    let oldY = iy;
+
+    // 一番下まで落とすループ
+    while (kakunin(ix, iy + 1, imuki, ishurui)) {
+        iy++;
+    }
+
+    // ブロックの移動を画面上に反映
+    kesu(cg, ix, oldY, imuki, ishurui);  // 元の場所を消す
+    kaku(cg, ix, iy, imuki, ishurui);   // 新しい場所に描く
+
+    // ブロックを状態に確定させる（固定）
+    p = block[ishurui][imuki];
+    for (n = 0; n < 4; n++) {
+        for (m = 0; m < 4; m++) {
+            if (p[n][m] == 1) {
+                jyoutai[iy + n][ix + m] = ishurui;
+            }
+        }
+    }
+
+    // 得点計算など落ちた後の処理
+    tokutenkeisan();
+
+    // 次のブロックの準備
+    ix = 4;
+    iy = 0;
+    ishurui = btsugi;
+    imuki = 0;
+    kaku(cg, ix, iy, imuki, ishurui);
+
+    // 次のブロックをセット
+    tsugiwotsukuru();
+
+    // 置けるか確認（ゲームオーバー判定）
+    if (!kakunin(ix, iy, imuki, ishurui)) {
+        document.getElementById('gameover').play();
+        alert('ゲームオーバー');
+        jikkou = false;
+    }
+}
+
+
+
+
 function ugokasu(e) {
     // 描く先のCanvasを取得
     gamegamen = document.getElementById('game');
     cg = gamegamen.getContext('2d');
+
+    if (e.keyCode == 32) {
+        haaddodoroppu();
+        return;  // これ以上の処理をしない
+    }
 
     // 現在の座標と向きを保存(キー操作で移動する時に本当に置ける場所なのか確認)
     maenoix = ix;
@@ -495,6 +551,8 @@ function jikandeugokasu() {
 
 
 function gamekaishi() {
+
+    
     gamegamen = document.getElementById('game');
     cg = gamegamen.getContext('2d');
 
@@ -549,11 +607,11 @@ function gamekaishi() {
 }
 
 function hajime() {
-    
+
     console.time('time');
 
     console.log('自動で実行される関数の処理速度を測定開始');
-    
+
     alert("ゲーム中に効果音が流れるため音量にご注意ください");
     // 背景のCanvasを取得
     backgamen = document.getElementById('back');
@@ -608,7 +666,7 @@ function hajime() {
         x = x + 20;
     }
 
-    console.timeEnd('time');
+	console.timeEnd('time');
 
     console.log('測定終了');
 }
