@@ -5,15 +5,6 @@
         <title></title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <style>
-            html, body {
-              margin: 0;
-              padding: 0;
-              touch-action: manipulation;
-              font-family: sans-serif;
-            }
-          </style>
     </head>
 
     <body onload="hajime()" onkeydown="ugokasu(event)">
@@ -90,18 +81,6 @@
                 margin: auto;
             }
         </style>
-
-         <script type="text/javascript">
-            let lastTouchEnd = 0;
-            document.addEventListener('touchend', function (event) {
-              const now = Date.now();
-          if (now - lastTouchEnd <= 300) {
-            event.preventDefault(); // ダブルタップを無効化
-              }
-              lastTouchEnd = now;
-            }, false);
-
-         </script>
     </body>
 
 </html>
