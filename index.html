@@ -83,6 +83,26 @@
             }
         </style>
 
+          <!--キースクロールの制御-->
+        <script>
+            window.addEventListener("keydown", function (e) {
+            const keys = [
+                "ArrowUp",
+                "ArrowDown",
+                "ArrowLeft",
+                "ArrowRight",
+                " ",
+                "PageUp",
+                "PageDown",
+                "Home",
+                "End"
+            ];
+            if (keys.includes(e.key)) {
+                e.preventDefault();
+        }
+            }, { passive: false });
+        </script>
+
     </body>
 
 </html>
